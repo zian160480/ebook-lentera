@@ -34,7 +34,8 @@ body {
   box-shadow: 0 24px 64px rgba(0,0,0,0.35);
   text-align: center;
 }
-.login-logo { font-size: 52px; margin-bottom: 10px; }
+.login-logo { margin-bottom: 10px; }
+.login-logo img { height: 60px; }
 .login-card h1 { font-size: 20px; color: #0d1b2a; margin-bottom: 4px; font-weight: 700; }
 .login-card .sub { font-size: 13px; color: #888; margin-bottom: 28px; }
 .role-tabs { display: flex; border: 2px solid #1b4f72; border-radius: 8px; overflow: hidden; margin-bottom: 22px; }
@@ -267,7 +268,7 @@ tr:hover td { background: #fafbff; }
 ══════════════════════════════════════════ -->
 <div id="login-screen">
   <div class="login-card">
-    <div class="login-logo">📖</div>
+    <div class="login-logo"><img src="data:image/png;base64,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" alt="Lentera"></div>
     <h1>eBook Lentera</h1>
     <p class="sub">Kolej Komuniti Pasir Mas — Platform Pengurusan Penyelidikan</p>
 
@@ -298,7 +299,7 @@ tr:hover td { background: #fafbff; }
   <!-- TOP BAR -->
   <div class="topbar">
     <div>
-      <div class="topbar-title">📖 eBook Lentera — Kolej Komuniti Pasir Mas</div>
+      <div class="topbar-title"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAASgAAABmCAYAAAB4IgyxAAAKFmlDQ1BpY2MAAEiJtVZ5PJRrG37e9519sc2Q3di3RpYwyL6TyE6bMTMYy2DMoNImqXAiSbYSORU6dFqQ0yIt2o7SpqLOyBGq09Eilcr3Dn/o+33nz/Ndv9/zvNd7/e77fu7nfv94LwDIYwAFjK4UgUgY7O3GiIyKZuAfAwSoAUWgB7TYnIw08L+A5unHh3Nv95jS3fiT47PWd2Et2W5f/ryx1Y76D7k/Qo7Ly+Cg5TxQvjYWPRzlXSinx4YGu6P8PgAECjeFywWAKEH1HfGzMaQEaUz8DzHJ4hQ+qudI9RQeOwPlJSjXi01KE6H8lFQXzuVem+U/5Ip4HLQeaRDVKZliHnoWSTqX7VkiaS5Zen86J00o5Xkot+UksNEY8lmUL5zrfxZaGdIB+nq621jY2dgwLZkWjNhkNieJkcFhJ0ur/tuQfqs5pncQAFm0t7bbHLEwc07DSDcsIAFZQAcqQBPoAiPABJbAFjgAF+AJ/EAgCAVRYDXggASQAoQgC+SALSAfFIISsBdUgVrQABpBCzgB2sFZcBFcBTfBHfAADAAJGAGvwAT4CKYhCMJDVIgGqUBakD5kCllCLMgJ8oSWQsFQFBQDxUMCSAzlQFuhQqgUqoLqoEboV+gMdBG6DvVBj6EhaBx6B32BEZgC02EN2ABeBLNgV9gfDoVXwfFwOrwOzoN3wRVwPXwMboMvwjfhB7AEfgVPIgAhI0qINsJEWIg7EohEI3GIENmIFCDlSD3SgnQiPcg9RIK8Rj5jcBgahoFhYhwwPpgwDAeTjtmIKcJUYY5i2jCXMfcwQ5gJzHcsFauONcXaY32xkdh4bBY2H1uOPYw9jb2CfYAdwX7E4XBKOEOcLc4HF4VLxK3HFeH241pxXbg+3DBuEo/Hq+BN8Y74QDwbL8Ln4yvxx/AX8HfxI/hPBDJBi2BJ8CJEEwSEXEI5oYlwnnCXMEqYJsoR9Yn2xEAil7iWWExsIHYSbxNHiNMkeZIhyZEUSkokbSFVkFpIV0iDpPdkMlmHbEdeTuaTN5MryMfJ18hD5M8UBYoJxZ2ykiKm7KIcoXRRHlPeU6lUA6oLNZoqou6iNlIvUZ9RP8nQZMxkfGW4MptkqmXaZO7KvJElyurLusqull0nWy57Uva27Gs5opyBnLscW26jXLXcGbl+uUl5mryFfKB8inyRfJP8dfkxBbyCgYKnAlchT+GQwiWFYRpC06W50zi0rbQG2hXaCB1HN6T70hPphfRf6L30CUUFxcWK4YrZitWK5xQlSoiSgZKvUrJSsdIJpYdKXxZoLHBdwFuwc0HLgrsLppTVlF2UecoFyq3KD5S/qDBUPFWSVHartKs8VcWomqguV81SPaB6RfW1Gl3NQY2jVqB2Qu2JOqxuoh6svl79kPot9UkNTQ1vjTSNSo1LGq81lTRdNBM1yzTPa45r0bSctPhaZVoXtF4yFBmujGRGBeMyY0JbXdtHW6xdp92rPa1jqBOmk6vTqvNUl6TL0o3TLdPt1p3Q09IL0MvRa9Z7ok/UZ+kn6O/T78GesSOsBcuQYap4QeIMzP4bJg21N7bYM3bWd1lLe3OE7VCe4J7bMHqxDOUB1dkBtM9UrBM/W7hDzaKfJ8IfQfQ9JjqLiDZ8JIusBOiRVrLGN/sJQnbQ8pcLKBqx+8bN9hON/dvv3kJ6CQDWZ6tCuvHRhxcZSuMzL1QLSRP1QFDKcMzKeMJSmqMhPLJsAj0lMxjf62oi/UyPpqG5b1f//S3Fk18sFRJ4yCkLOm5fSjqDktBfSikJMGMgEf3A47EbkjkZE65DIhbwFLe3JRm0A+bqbq9xHvI7T6FEXR/KDpRuFvAeStv5OvRMXUMdFdWbMlV1YPTKvGQqxJcbCrCfFvEzqBqPMW/h7OqWpHUPRdFoFxN5PXnP6Vv7GApJSJTbN9xHGHJOEoSJWxaK2b5kR0zSGq0CKFLgKqc5nDSmICv2OWJIl6UIAAAAAElFTkSuQmCC" alt="Lentera" style="height:28px;vertical-align:middle;margin-right:8px;filter:brightness(0) invert(1);"> eBook Lentera — Kolej Komuniti Pasir Mas</div>
       <div class="topbar-sub" id="topbar-sub">Platform Pengurusan Penyelidikan</div>
     </div>
     <div class="topbar-right">
