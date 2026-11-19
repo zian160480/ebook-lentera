@@ -274,6 +274,45 @@ tr:hover td { background: #fafbff; }
   body { background: white; }
 }
 
+/* ══ MODAL REVIEWER ══ */
+.modal-box-wide {
+  background: white; border-radius: 16px; padding: 28px 30px;
+  width: 100%; max-width: 800px; max-height: 92vh; overflow-y: auto;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+}
+.reviewer-section {
+  background: #f7f8fa; border-radius: 10px; padding: 16px 18px;
+  margin-bottom: 16px; border-left: 4px solid #1b4f72;
+}
+.reviewer-section h3 {
+  font-size: 13px; font-weight: 700; color: #1b4f72;
+  margin-bottom: 12px; text-transform: uppercase; letter-spacing: 0.5px;
+}
+.rating-table { width: 100%; border-collapse: collapse; font-size: 13px; margin-bottom: 4px; }
+.rating-table th { background: #1b4f72; color: white; padding: 8px 10px; font-size: 12px; text-align: center; }
+.rating-table td { padding: 8px 10px; border-bottom: 1px solid #e8ecf4; vertical-align: middle; }
+.rating-table td:first-child { font-weight: 600; color: #333; }
+.rating-table input[type=radio] { accent-color: #1b4f72; width: 16px; height: 16px; cursor: pointer; }
+.rating-table tr:hover td { background: #f0f6ff; }
+.rating-legend { display: flex; gap: 16px; flex-wrap: wrap; font-size: 11px; color: #666; margin-top: 6px; }
+.rating-legend span { font-weight: 700; }
+.recom-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.recom-table td { padding: 9px 12px; border-bottom: 1px solid #e8ecf4; }
+.recom-table td:first-child { width: 36px; text-align: center; }
+.recom-table input[type=checkbox] { accent-color: #1b4f72; width: 16px; height: 16px; cursor: pointer; }
+.recom-table tr:hover td { background: #f0f6ff; }
+.part-a-table { width: 100%; border-collapse: collapse; font-size: 13px; }
+.part-a-table th { background: #0d1b2a; color: white; padding: 8px 12px; font-size: 12px; }
+.part-a-table td { padding: 8px 12px; border-bottom: 1px solid #e8ecf4; vertical-align: top; }
+.part-a-table td:first-child { font-weight: 600; color: #444; min-width: 180px; }
+.part-a-table input, .part-a-table select, .part-a-table textarea {
+  width: 100%; padding: 7px 10px; border: 1.5px solid #ddd;
+  border-radius: 6px; font-size: 13px; font-family: inherit;
+}
+.part-a-table input:focus, .part-a-table select:focus, .part-a-table textarea:focus {
+  border-color: #1b4f72; outline: none;
+}
+
 /* ══ PASSWORD TOGGLE ══ */
 .pass-wrap { position: relative; display: flex; align-items: center; }
 .pass-wrap input { flex: 1; padding-right: 42px; }
@@ -307,7 +346,7 @@ tr:hover td { background: #fafbff; }
 
     <div class="role-tabs">
       <button class="role-tab active" id="tab-admin"      onclick="switchLoginRole('admin')">🛡️ Admin</button>
-      <button class="role-tab"        id="tab-editor"     onclick="switchLoginRole('editor')">✏️ Editor</button>
+      <button class="role-tab"        id="tab-reviewer"   onclick="switchLoginRole('reviewer')">🔍 Reviewer</button>
       <button class="role-tab"        id="tab-penyelidik" onclick="switchLoginRole('penyelidik')">🔬 Penyelidik</button>
     </div>
 
@@ -354,7 +393,7 @@ tr:hover td { background: #fafbff; }
     <div class="nav-tab active" data-page="pg-dashboard"   onclick="showPage('pg-dashboard')">📊 Dashboard</div>
     <div class="nav-tab penyelidik-only" data-page="pg-submit"   onclick="showPage('pg-submit')">📝 Submit Penyelidikan</div>
     <div class="nav-tab penyelidik-only" data-page="pg-kertas"   onclick="showPage('pg-kertas')">📂 Kertas Saya</div>
-    <div class="nav-tab editor-admin-only" data-page="pg-semak"  onclick="showPage('pg-semak')">🔍 Semak Submission</div>
+    <div class="nav-tab reviewer-admin-only" data-page="pg-semak"  onclick="showPage('pg-semak')">🔍 Semak Submission</div>
     <div class="nav-tab" data-page="pg-galeri"                   onclick="showPage('pg-galeri')">🏛️ Galeri Penerbitan</div>
     <div class="nav-tab admin-only" data-page="pg-laporan"       onclick="showPage('pg-laporan')">📈 Laporan & Eksport</div>
     <div class="nav-tab admin-only" data-page="pg-pengguna"      onclick="showPage('pg-pengguna')">👥 Urus Pengguna</div>
@@ -795,7 +834,7 @@ tr:hover td { background: #fafbff; }
             <label>Peranan</label>
             <select id="p-peranan">
               <option value="penyelidik">Penyelidik</option>
-              <option value="editor">Editor</option>
+              <option value="reviewer">Reviewer</option>
               <option value="admin">Admin</option>
             </select>
           </div>
@@ -996,13 +1035,176 @@ tr:hover td { background: #fafbff; }
       <input type="email" id="daftar-emel" placeholder="emel@contoh.com">
     </div>
     <div style="background:#fff8e1;border:1px solid #f9a825;border-radius:8px;padding:10px 14px;margin-bottom:14px;font-size:12px;color:#856404;">
-      ℹ️ Semua pendaftaran baharu akan didaftarkan sebagai <strong>Penyelidik</strong>. Hubungi Admin untuk peranan Editor atau Admin.
+      ℹ️ Semua pendaftaran baharu akan didaftarkan sebagai <strong>Penyelidik</strong>. Hubungi Admin untuk peranan Reviewer atau Admin.
     </div>
     <div style="display:flex;gap:10px;">
       <button class="btn btn-green" id="btn-daftar" onclick="hantarDaftar()">✅ Hantar Permohonan</button>
       <button class="btn btn-outline" onclick="tutupModal('modal-daftar')">Batal</button>
     </div>
     <div id="daftar-msg" style="margin-top:12px;font-size:13px;display:none;"></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════
+     MODAL: BORANG PENILAIAN REVIEWER
+══════════════════════════════════════════ -->
+<div class="modal-overlay" id="modal-reviewer">
+  <div class="modal-box-wide">
+    <button class="modal-close" onclick="tutupModal('modal-reviewer')">✕</button>
+    <div class="modal-title" id="reviewer-modal-tajuk">📋 Borang Penilaian Reviewer</div>
+    <input type="hidden" id="reviewer-submission-id">
+
+    <!-- PART A: EDITORIAL OFFICE ONLY -->
+    <div style="background:#e8f4fd;border-radius:10px;padding:14px 18px;margin-bottom:16px;border:1.5px solid #b8d8f0;">
+      <div style="font-size:13px;font-weight:800;color:#0d1b2a;margin-bottom:12px;">PART A — EDITORIAL OFFICE ONLY</div>
+      <table class="part-a-table">
+        <thead><tr><th>Perkara</th><th>Maklumat</th></tr></thead>
+        <tbody>
+          <tr><td>Tarikh Diterima</td><td><input type="date" id="pa-tarikh-terima"></td></tr>
+          <tr><td>No. Manuscript</td><td><input type="text" id="pa-no-mss" placeholder="Contoh: LENTERA-2026-001"></td></tr>
+          <tr><td>Tajuk Manuscript</td><td><input type="text" id="pa-tajuk-mss" readonly style="background:#eef4f8;color:#555;"></td></tr>
+          <tr><td>Pengarang</td><td><input type="text" id="pa-pengarang" readonly style="background:#eef4f8;color:#555;"></td></tr>
+          <tr><td>Institusi</td><td><input type="text" id="pa-institusi" readonly style="background:#eef4f8;color:#555;"></td></tr>
+          <tr><td>Kategori</td><td><input type="text" id="pa-kategori" readonly style="background:#eef4f8;color:#555;"></td></tr>
+          <tr><td>Reviewer</td><td><input type="text" id="pa-reviewer" placeholder="Nama reviewer"></td></tr>
+          <tr><td>Tarikh Hantar kepada Reviewer</td><td><input type="date" id="pa-tarikh-hantar-rv"></td></tr>
+          <tr><td>Tarikh Reviewer Perlu Pulangkan</td><td><input type="date" id="pa-tarikh-due"></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- PART B: REVIEWER ONLY -->
+    <div style="font-size:13px;font-weight:800;color:#0d1b2a;margin-bottom:12px;padding-bottom:8px;border-bottom:2px solid #e8ecf4;">
+      PART B — REVIEWER ONLY
+    </div>
+
+    <!-- SECTION I: Comments per Section -->
+    <div class="reviewer-section">
+      <h3>Section I — Ulasan Mengikut Bahagian Manuskrip</h3>
+      <table class="part-a-table">
+        <thead><tr><th>Bahagian</th><th>Ulasan / Cadangan Penambahbaikan</th></tr></thead>
+        <tbody>
+          <tr><td>Tajuk</td><td><textarea id="sec1-tajuk" rows="2" placeholder="Ulasan mengenai tajuk..."></textarea></td></tr>
+          <tr><td>Abstrak</td><td><textarea id="sec1-abstrak" rows="2" placeholder="Ulasan mengenai abstrak..."></textarea></td></tr>
+          <tr><td>Pengenalan / Latar Belakang</td><td><textarea id="sec1-pengenalan" rows="2" placeholder="Ulasan mengenai pengenalan..."></textarea></td></tr>
+          <tr><td>Metodologi</td><td><textarea id="sec1-metodologi" rows="2" placeholder="Ulasan mengenai metodologi..."></textarea></td></tr>
+          <tr><td>Dapatan / Hasil</td><td><textarea id="sec1-dapatan" rows="2" placeholder="Ulasan mengenai dapatan..."></textarea></td></tr>
+          <tr><td>Perbincangan</td><td><textarea id="sec1-perbincangan" rows="2" placeholder="Ulasan mengenai perbincangan..."></textarea></td></tr>
+          <tr><td>Kesimpulan</td><td><textarea id="sec1-kesimpulan" rows="2" placeholder="Ulasan mengenai kesimpulan..."></textarea></td></tr>
+          <tr><td>Rujukan / Bibliografi</td><td><textarea id="sec1-rujukan" rows="2" placeholder="Ulasan mengenai rujukan..."></textarea></td></tr>
+          <tr><td>Lain-lain</td><td><textarea id="sec1-lain" rows="2" placeholder="Sebarang ulasan tambahan..."></textarea></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION II: Rating -->
+    <div class="reviewer-section" style="border-left-color:#8e44ad;">
+      <h3>Section II — Penilaian (Rating)</h3>
+      <div style="font-size:11px;color:#888;margin-bottom:10px;">1 = Cemerlang &nbsp;|&nbsp; 2 = Baik &nbsp;|&nbsp; 3 = Memuaskan &nbsp;|&nbsp; 4 = Lemah</div>
+      <table class="rating-table">
+        <thead>
+          <tr>
+            <th style="text-align:left;width:40%;">Kriteria</th>
+            <th>1<br><small>Cemerlang</small></th>
+            <th>2<br><small>Baik</small></th>
+            <th>3<br><small>Memuaskan</small></th>
+            <th>4<br><small>Lemah</small></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Keaslian &amp; Sumbangan Pengetahuan</td>
+            <td style="text-align:center;"><input type="radio" name="rt-keaslian" value="1"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-keaslian" value="2"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-keaslian" value="3"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-keaslian" value="4"></td>
+          </tr>
+          <tr>
+            <td>Kualiti Penulisan &amp; Bahasa</td>
+            <td style="text-align:center;"><input type="radio" name="rt-kualiti" value="1"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-kualiti" value="2"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-kualiti" value="3"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-kualiti" value="4"></td>
+          </tr>
+          <tr>
+            <td>Metodologi &amp; Kesahihan Data</td>
+            <td style="text-align:center;"><input type="radio" name="rt-metodologi" value="1"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-metodologi" value="2"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-metodologi" value="3"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-metodologi" value="4"></td>
+          </tr>
+          <tr>
+            <td>Relevansi &amp; Kepentingan Topik</td>
+            <td style="text-align:center;"><input type="radio" name="rt-relevansi" value="1"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-relevansi" value="2"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-relevansi" value="3"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-relevansi" value="4"></td>
+          </tr>
+          <tr>
+            <td>Format &amp; Pematuhan Garis Panduan</td>
+            <td style="text-align:center;"><input type="radio" name="rt-format" value="1"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-format" value="2"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-format" value="3"></td>
+            <td style="text-align:center;"><input type="radio" name="rt-format" value="4"></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION III: Recommendation -->
+    <div class="reviewer-section" style="border-left-color:#27ae60;">
+      <h3>Section III — Syor / Cadangan (Tandakan ✓)</h3>
+      <table class="recom-table">
+        <tbody>
+          <tr><td><input type="checkbox" id="rc-terima-tanpa"></td><td>Diterima tanpa sebarang pengubahsuaian</td></tr>
+          <tr><td><input type="checkbox" id="rc-terima-minor"></td><td>Diterima dengan pengubahsuaian kecil (minor revision)</td></tr>
+          <tr><td><input type="checkbox" id="rc-terima-major"></td><td>Diterima dengan pengubahsuaian besar (major revision) — perlu semak semula</td></tr>
+          <tr><td><input type="checkbox" id="rc-tolak-baiki"></td><td>Ditolak — boleh hantar semula setelah penambahbaikan dilakukan</td></tr>
+          <tr><td><input type="checkbox" id="rc-tolak-terus"></td><td>Ditolak sepenuhnya — tidak sesuai untuk penerbitan</td></tr>
+          <tr><td><input type="checkbox" id="rc-lain"></td><td>Lain-lain (nyatakan dalam ulasan tambahan)</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- SECTION IV: Additional Comments -->
+    <div class="reviewer-section" style="border-left-color:#e67e22;">
+      <h3>Section IV — Ulasan &amp; Komen Tambahan</h3>
+      <div class="form-field" style="margin:0;">
+        <textarea id="sec4-komen" rows="5" style="width:100%;padding:10px;border:1.5px solid #ddd;border-radius:8px;font-size:13px;font-family:inherit;resize:vertical;" placeholder="Masukkan sebarang ulasan atau cadangan tambahan kepada pengarang dan editorial..."></textarea>
+      </div>
+    </div>
+
+    <!-- Signature area -->
+    <div style="border:1.5px solid #e8ecf4;border-radius:8px;padding:14px 16px;margin-bottom:16px;">
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        <div>
+          <div class="form-field" style="margin-bottom:10px;">
+            <label style="font-size:12px;font-weight:700;color:#555;">Nama Reviewer</label>
+            <input type="text" id="rv-nama" placeholder="Nama penuh reviewer">
+          </div>
+          <div class="form-field" style="margin:0;">
+            <label style="font-size:12px;font-weight:700;color:#555;">Tarikh Penilaian</label>
+            <input type="date" id="rv-tarikh">
+          </div>
+        </div>
+        <div>
+          <div class="form-field" style="margin-bottom:10px;">
+            <label style="font-size:12px;font-weight:700;color:#555;">Jawatan / Institusi</label>
+            <input type="text" id="rv-jawatan" placeholder="Jawatan dan institusi">
+          </div>
+          <div class="form-field" style="margin:0;">
+            <label style="font-size:12px;font-weight:700;color:#555;">No. Telefon / E-mel</label>
+            <input type="text" id="rv-hubungi" placeholder="Tel / E-mel reviewer">
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div style="display:flex;gap:10px;flex-wrap:wrap;">
+      <button class="btn btn-blue" id="btn-simpan-penilaian" onclick="simpanPenilaian()">💾 Simpan Penilaian</button>
+      <button class="btn btn-outline" onclick="tutupModal('modal-reviewer')">Batal</button>
+    </div>
+    <div id="reviewer-msg" style="margin-top:10px;font-size:13px;display:none;"></div>
   </div>
 </div>
 
@@ -1024,7 +1226,7 @@ tr:hover td { background: #fafbff; }
 // ══════════════════════════════════════════
 // KONFIGURASI
 // ══════════════════════════════════════════
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5i9xycFC5-oO51OWNSq1gteeZFeiErF3NU3VjwgZave_dAHA50L07vPIwjzP-eWsl/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxRjeOCdWR31jIeWMUKvOSd_HcbjjikIvb36xBV9q9U3QBWuzOpqqgmZ_LfcuhixYhB/exec';
 
 // ══════════════════════════════════════════
 // STATE GLOBAL
@@ -1075,7 +1277,8 @@ function badgeStatus(status) {
 function badgePeranan(role) {
   var map = {
     'admin':       '<span class="badge badge-diterima">Admin</span>',
-    'editor':      '<span class="badge badge-semakan">Editor</span>',
+    'reviewer':    '<span class="badge badge-semakan">Reviewer</span>',
+    'editor':      '<span class="badge badge-semakan">Reviewer</span>', // backward compat
     'penyelidik':  '<span class="badge badge-baru">Penyelidik</span>'
   };
   return map[role] || '<span class="badge">' + role + '</span>';
@@ -1120,7 +1323,7 @@ var loginRole = 'admin';
 
 function switchLoginRole(role) {
   loginRole = role;
-  ['admin','editor','penyelidik'].forEach(function(r){
+  ['admin','reviewer','penyelidik'].forEach(function(r){
     document.getElementById('tab-' + r).classList.toggle('active', r === role);
   });
 }
@@ -1159,15 +1362,15 @@ function masukApp() {
   document.getElementById('user-chip').textContent = currentUser.nama + ' (' + currentUser.role + ')';
   document.getElementById('topbar-sub').textContent = 'Selamat datang, ' + currentUser.nama;
 
-  var isAdmin   = currentUser.role === 'admin';
-  var isEditor  = currentUser.role === 'editor';
+  var isAdmin      = currentUser.role === 'admin';
+  var isReviewer   = currentUser.role === 'reviewer' || currentUser.role === 'editor'; // backward compat
   var isPenyelidik = currentUser.role === 'penyelidik';
 
   document.querySelectorAll('.penyelidik-only').forEach(function(el){
     el.style.display = isPenyelidik ? '' : 'none';
   });
-  document.querySelectorAll('.editor-admin-only').forEach(function(el){
-    el.style.display = (isAdmin || isEditor) ? '' : 'none';
+  document.querySelectorAll('.reviewer-admin-only').forEach(function(el){
+    el.style.display = (isAdmin || isReviewer) ? '' : 'none';
   });
   document.querySelectorAll('.admin-only').forEach(function(el){
     el.style.display = isAdmin ? '' : 'none';
@@ -1531,6 +1734,7 @@ function bukaSemakDetail(id) {
   var actions = document.getElementById('modal-semak-actions');
   actions.innerHTML =
     '<div style="display:flex;gap:8px;flex-wrap:wrap;">' +
+      '<button class="btn btn-purple btn-sm" onclick="bukaBorangPenilaian(\'' + escAttr(id) + '\')">📋 Borang Penilaian</button>' +
       '<button class="btn btn-green btn-sm" onclick="kemaskiniStatus(\'' + escAttr(id) + '\',\'Diterima\')">✅ Terima</button>' +
       '<button class="btn btn-orange btn-sm" onclick="kemaskiniStatus(\'' + escAttr(id) + '\',\'Dalam Semakan\')">🔍 Dalam Semakan</button>' +
       '<button class="btn btn-red btn-sm" onclick="kemaskiniStatus(\'' + escAttr(id) + '\',\'Ditolak\')">❌ Tolak</button>' +
@@ -2019,6 +2223,144 @@ function hantarDaftar() {
     }
   }).catch(function(){
     btn.disabled = false; btn.textContent = '✅ Hantar Permohonan';
+    msg.textContent = '❌ Ralat sambungan. Cuba semula.';
+    msg.style.color = '#e74c3c'; msg.style.display = 'block';
+  });
+}
+
+// ══════════════════════════════════════════
+// BORANG PENILAIAN REVIEWER
+// ══════════════════════════════════════════
+function bukaBorangPenilaian(submissionId) {
+  var s = allSubmissions.find(function(x){ return x.id === submissionId; });
+  if (!s) return;
+
+  // Set hidden field & title
+  document.getElementById('reviewer-submission-id').value = submissionId;
+  document.getElementById('reviewer-modal-tajuk').textContent = '📋 Borang Penilaian — ' + s.tajuk;
+
+  // Auto-isi Part A (read-only fields)
+  document.getElementById('pa-tajuk-mss').value = s.tajuk || '';
+  document.getElementById('pa-pengarang').value = s.penyelidik || '';
+  document.getElementById('pa-institusi').value = (s.institusiJenis || '') + (s.namaInstitusi ? ' — ' + s.namaInstitusi : '');
+  document.getElementById('pa-kategori').value  = s.kategori || '';
+
+  // Auto-isi nama reviewer dengan nama pengguna semasa
+  document.getElementById('pa-reviewer').value = currentUser ? currentUser.nama : '';
+  document.getElementById('rv-nama').value      = currentUser ? currentUser.nama : '';
+
+  // Set tarikh hari ini
+  var today = new Date().toISOString().slice(0, 10);
+  document.getElementById('pa-tarikh-terima').value    = today;
+  document.getElementById('pa-tarikh-hantar-rv').value = today;
+  document.getElementById('rv-tarikh').value           = today;
+
+  // Kosongkan semua fields Part B
+  ['pa-no-mss','pa-tarikh-due','rv-jawatan','rv-hubungi'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+  ['sec1-tajuk','sec1-abstrak','sec1-pengenalan','sec1-metodologi',
+   'sec1-dapatan','sec1-perbincangan','sec1-kesimpulan','sec1-rujukan',
+   'sec1-lain','sec4-komen'].forEach(function(id){
+    document.getElementById(id).value = '';
+  });
+
+  // Reset semua radio buttons
+  ['rt-keaslian','rt-kualiti','rt-metodologi','rt-relevansi','rt-format'].forEach(function(name){
+    document.querySelectorAll('input[name="' + name + '"]').forEach(function(r){ r.checked = false; });
+  });
+
+  // Reset semua checkboxes
+  ['rc-terima-tanpa','rc-terima-minor','rc-terima-major','rc-tolak-baiki','rc-tolak-terus','rc-lain'].forEach(function(id){
+    document.getElementById(id).checked = false;
+  });
+
+  document.getElementById('reviewer-msg').style.display = 'none';
+  tutupModal('modal-semak');
+  bukaModal('modal-reviewer');
+}
+
+function simpanPenilaian() {
+  var submissionId = document.getElementById('reviewer-submission-id').value;
+  if (!submissionId) return;
+
+  var msg = document.getElementById('reviewer-msg');
+  var btn = document.getElementById('btn-simpan-penilaian');
+
+  // Kumpul rating
+  function getRadio(name) {
+    var sel = document.querySelector('input[name="' + name + '"]:checked');
+    return sel ? sel.value : '';
+  }
+
+  // Kumpul syor
+  var syorList = [];
+  var syorMap = {
+    'rc-terima-tanpa':  'Diterima tanpa pengubahsuaian',
+    'rc-terima-minor':  'Diterima — minor revision',
+    'rc-terima-major':  'Diterima — major revision',
+    'rc-tolak-baiki':   'Ditolak — boleh hantar semula',
+    'rc-tolak-terus':   'Ditolak sepenuhnya',
+    'rc-lain':          'Lain-lain'
+  };
+  Object.keys(syorMap).forEach(function(id){
+    if (document.getElementById(id).checked) syorList.push(syorMap[id]);
+  });
+
+  // Bina objek penilaian
+  var penilaian = {
+    submissionId:    submissionId,
+    reviewerNama:    document.getElementById('rv-nama').value.trim(),
+    reviewerJawatan: document.getElementById('rv-jawatan').value.trim(),
+    reviewerHubungi: document.getElementById('rv-hubungi').value.trim(),
+    tarikhPenilaian: document.getElementById('rv-tarikh').value,
+    partA: {
+      tarikhTerima:   document.getElementById('pa-tarikh-terima').value,
+      noMss:          document.getElementById('pa-no-mss').value.trim(),
+      tarikhHantarRv: document.getElementById('pa-tarikh-hantar-rv').value,
+      tarikhDue:      document.getElementById('pa-tarikh-due').value
+    },
+    seksyen1: {
+      tajuk:        document.getElementById('sec1-tajuk').value.trim(),
+      abstrak:      document.getElementById('sec1-abstrak').value.trim(),
+      pengenalan:   document.getElementById('sec1-pengenalan').value.trim(),
+      metodologi:   document.getElementById('sec1-metodologi').value.trim(),
+      dapatan:      document.getElementById('sec1-dapatan').value.trim(),
+      perbincangan: document.getElementById('sec1-perbincangan').value.trim(),
+      kesimpulan:   document.getElementById('sec1-kesimpulan').value.trim(),
+      rujukan:      document.getElementById('sec1-rujukan').value.trim(),
+      lain:         document.getElementById('sec1-lain').value.trim()
+    },
+    rating: {
+      keaslian:   getRadio('rt-keaslian'),
+      kualiti:    getRadio('rt-kualiti'),
+      metodologi: getRadio('rt-metodologi'),
+      relevansi:  getRadio('rt-relevansi'),
+      format:     getRadio('rt-format')
+    },
+    syor:        syorList.join('; '),
+    komen:       document.getElementById('sec4-komen').value.trim(),
+    oleh:        currentUser ? currentUser.id : '',
+    tarikhSimpan: new Date().toISOString()
+  };
+
+  btn.disabled = true; btn.textContent = '⏳ Menyimpan...';
+  msg.style.display = 'none';
+
+  api({
+    action:    'simpanPenilaian',
+    penilaian: penilaian
+  }).then(function(res) {
+    btn.disabled = false; btn.textContent = '💾 Simpan Penilaian';
+    if (res.status === 'ok') {
+      showToast('✅ Borang penilaian berjaya disimpan!', 'ok');
+      tutupModal('modal-reviewer');
+    } else {
+      msg.textContent = '❌ ' + (res.mesej || 'Ralat semasa menyimpan.');
+      msg.style.color = '#e74c3c'; msg.style.display = 'block';
+    }
+  }).catch(function(){
+    btn.disabled = false; btn.textContent = '💾 Simpan Penilaian';
     msg.textContent = '❌ Ralat sambungan. Cuba semula.';
     msg.style.color = '#e74c3c'; msg.style.display = 'block';
   });
