@@ -273,6 +273,20 @@ tr:hover td { background: #fafbff; }
   .topbar, .nav-bar, .btn, .btn-primary, #toast { display: none !important; }
   body { background: white; }
 }
+
+/* ══ PASSWORD TOGGLE ══ */
+.pass-wrap { position: relative; display: flex; align-items: center; }
+.pass-wrap input { flex: 1; padding-right: 42px; }
+.pass-eye {
+  position: absolute; right: 0;
+  width: 40px; height: 100%;
+  background: none; border: none; cursor: pointer;
+  font-size: 16px; color: #aaa; display: flex;
+  align-items: center; justify-content: center;
+  transition: color 0.2s;
+}
+.pass-eye:hover { color: #1b4f72; }
+.pass-eye.shown { color: #1b4f72; }
 </style>
 </head>
 <body>
@@ -303,7 +317,10 @@ tr:hover td { background: #fafbff; }
     </div>
     <div class="form-field">
       <label>Kata Laluan</label>
-      <input type="password" id="login-pass" placeholder="Kata laluan" onkeydown="if(event.key==='Enter')doLogin()">
+      <div class="pass-wrap">
+        <input type="password" id="login-pass" placeholder="Kata laluan" onkeydown="if(event.key==='Enter')doLogin()">
+        <button type="button" class="pass-eye" onclick="togglePass('login-pass',this)" tabindex="-1">👁</button>
+      </div>
     </div>
     <button class="btn-primary" onclick="doLogin()">Log Masuk</button>
     <div class="login-msg err" id="login-err"></div>
@@ -772,7 +789,7 @@ tr:hover td { background: #fafbff; }
           </div>
           <div class="form-field" style="margin:0">
             <label>Kata Laluan</label>
-            <input type="password" id="p-pass" placeholder="Kata laluan">
+            <div class="pass-wrap"><input type="password" id="p-pass" placeholder="Kata laluan"><button type="button" class="pass-eye" onclick="togglePass('p-pass',this)" tabindex="-1">👁</button></div>
           </div>
           <div class="form-field" style="margin:0">
             <label>Peranan</label>
@@ -903,15 +920,15 @@ tr:hover td { background: #fafbff; }
     <div class="modal-title">🔑 Tukar Kata Laluan</div>
     <div class="form-field">
       <label>Kata Laluan Semasa <span style="color:red">*</span></label>
-      <input type="password" id="tp-lama" placeholder="Kata laluan semasa anda">
+      <div class="pass-wrap"><input type="password" id="tp-lama" placeholder="Kata laluan semasa anda"><button type="button" class="pass-eye" onclick="togglePass('tp-lama',this)" tabindex="-1">👁</button></div>
     </div>
     <div class="form-field">
       <label>Kata Laluan Baharu <span style="color:red">*</span></label>
-      <input type="password" id="tp-baru" placeholder="Kata laluan baharu">
+      <div class="pass-wrap"><input type="password" id="tp-baru" placeholder="Kata laluan baharu"><button type="button" class="pass-eye" onclick="togglePass('tp-baru',this)" tabindex="-1">👁</button></div>
     </div>
     <div class="form-field">
       <label>Sahkan Kata Laluan Baharu <span style="color:red">*</span></label>
-      <input type="password" id="tp-sahkan" placeholder="Ulang kata laluan baharu">
+      <div class="pass-wrap"><input type="password" id="tp-sahkan" placeholder="Ulang kata laluan baharu"><button type="button" class="pass-eye" onclick="togglePass('tp-sahkan',this)" tabindex="-1">👁</button></div>
     </div>
     <div style="display:flex;gap:10px;margin-top:4px;">
       <button class="btn btn-blue" id="btn-tukar-pass" onclick="tukarKataLaluan()">💾 Tukar</button>
@@ -932,11 +949,11 @@ tr:hover td { background: #fafbff; }
     <input type="hidden" id="reset-pass-id">
     <div class="form-field">
       <label>Kata Laluan Baharu <span style="color:red">*</span></label>
-      <input type="password" id="rp-baru" placeholder="Kata laluan baharu">
+      <div class="pass-wrap"><input type="password" id="rp-baru" placeholder="Kata laluan baharu"><button type="button" class="pass-eye" onclick="togglePass('rp-baru',this)" tabindex="-1">👁</button></div>
     </div>
     <div class="form-field">
       <label>Sahkan Kata Laluan Baharu <span style="color:red">*</span></label>
-      <input type="password" id="rp-sahkan" placeholder="Ulang kata laluan baharu">
+      <div class="pass-wrap"><input type="password" id="rp-sahkan" placeholder="Ulang kata laluan baharu"><button type="button" class="pass-eye" onclick="togglePass('rp-sahkan',this)" tabindex="-1">👁</button></div>
     </div>
     <div style="display:flex;gap:10px;margin-top:4px;">
       <button class="btn btn-blue" onclick="sahkanResetPass()">💾 Reset</button>
@@ -964,11 +981,11 @@ tr:hover td { background: #fafbff; }
     </div>
     <div class="form-field">
       <label>Kata Laluan <span style="color:red">*</span></label>
-      <input type="password" id="daftar-pass" placeholder="Minimum 6 aksara">
+      <div class="pass-wrap"><input type="password" id="daftar-pass" placeholder="Minimum 6 aksara"><button type="button" class="pass-eye" onclick="togglePass('daftar-pass',this)" tabindex="-1">👁</button></div>
     </div>
     <div class="form-field">
       <label>Sahkan Kata Laluan <span style="color:red">*</span></label>
-      <input type="password" id="daftar-sahkan" placeholder="Ulang kata laluan">
+      <div class="pass-wrap"><input type="password" id="daftar-sahkan" placeholder="Ulang kata laluan"><button type="button" class="pass-eye" onclick="togglePass('daftar-sahkan',this)" tabindex="-1">👁</button></div>
     </div>
     <div class="form-field">
       <label>Institusi</label>
@@ -1007,7 +1024,7 @@ tr:hover td { background: #fafbff; }
 // ══════════════════════════════════════════
 // KONFIGURASI
 // ══════════════════════════════════════════
-const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby7vXvPab-QVHhuFxSuKc0vuznG3A38vYEAwpCdJtm_AgaMg3kLLUGn2J2D1aA-0seH/exec';
+const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby5i9xycFC5-oO51OWNSq1gteeZFeiErF3NU3VjwgZave_dAHA50L07vPIwjzP-eWsl/exec';
 
 // ══════════════════════════════════════════
 // STATE GLOBAL
@@ -1067,6 +1084,19 @@ function badgePeranan(role) {
 function formatTarikh(ts) {
   if (!ts) return '—';
   return ts;
+}
+
+function togglePass(id, btn) {
+  var inp = document.getElementById(id);
+  if (inp.type === 'password') {
+    inp.type = 'text';
+    btn.textContent = '🙈';
+    btn.classList.add('shown');
+  } else {
+    inp.type = 'password';
+    btn.textContent = '👁';
+    btn.classList.remove('shown');
+  }
 }
 
 function escHtml(str) {
